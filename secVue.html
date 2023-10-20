@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+
+<body>
+    <div id="app-vue">
+
+        <!-- To do list with checkbox -->
+
+        <h1 v-show="inProgressTasks.length">To Do List</h1>
+        <ul>
+            <li v-for="task in inProgressTasks" :key="task.id">
+
+                <input type="checkbox" v-model="task.complete">
+                <label for="">{{task.nameOfTask}}</label>
+            </li>
+        </ul>
+
+        <br>
+        <br>
+
+        <h1 v-show="completedTasks.length">Completed List</h1>
+        <ul>
+            <li v-for="task in completedTasks" :key="task.id">
+
+                <input type="checkbox" v-model="task.complete">
+                <label for="">{{task.nameOfTask}}</label>
+            </li>
+        </ul>
+        <!-- 
+        <pre>
+            {{tasks}}
+        </pre> -->
+
+
+
+
+
+    </div>
+
+    <script>
+        let app = {
+            data() {
+                return {
+                    tasks: [
+                        { nameOfTask: 'First Task', complete: false, id: '1' },
+                        { nameOfTask: 'Second Task', complete: false, id: '2' },
+                        { nameOfTask: 'Third Task', complete: false, id: '3' },
+                    ]
+                }
+            },
+
+            computed: {
+                completedTasks() {
+                    return this.tasks.filter(a => a.complete);
+                },
+                inProgressTasks() {
+                    return this.tasks.filter(a => !a.complete);
+                }
+            },
+
+            // methods : {
+
+            // } ,
+
+            // mounted : {
+
+            // }
+        };
+
+
+        // let app = {
+        //     data(){
+        // return {
+
+        // }
+        //     },
+
+
+
+        //     methods : {
+
+        //     } ,
+
+
+
+        //     mounted : {
+
+        //     }
+        // };
+        Vue.createApp(app).mount('#app-vue')
+    </script>
+
+</html>
