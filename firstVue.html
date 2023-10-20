@@ -30,10 +30,12 @@
 
         <div>
             <input type="email" v-model="greetings">
+
             <span>mmmm</span>
             <p v-bind:class="paraClass" v-on:click="changeToYellow">
                 {{ greetings }} <span> ({{ greetings.length }}) </span>
             </p>
+            <span>aaa</span>
         </div>
         <div>
             <p :class="active ? 'redColor' : 'blueColor'" @click="changeLoveColor">
