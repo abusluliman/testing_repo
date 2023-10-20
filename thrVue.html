@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+
+<body>
+    <div id="app-vue">
+
+        <app-button v-on:click="increment" :disabled="count == 5 && proccessing">Abood - {{count}}</app-button>
+
+    </div>
+
+    <script>
+        let app = {
+
+            data() {
+                return {
+                    count: '1',
+                    proccessing: false,
+                };
+            },
+
+            components: {
+                'app-button': {
+                    template: `<button :disabled="$attrs.disabled">
+                                    <slot />
+                                </button>`
+                },
+            },
+
+            methods: {
+                increment() {
+                    this.count++
+                    if (this.count == 5) {
+                        this.proccessing = true;
+                    };
+                },
+            },
+
+
+        };
+
+        /*
+        
+                 let app = {
+                     data(){
+                         return {
+        
+                         }
+                     },
+
+                                 /*
+            
+                         methods : {
+            
+                         } ,
+            
+                         mounted : {
+            
+                         }
+        
+        
+                 componetns : {
+                             data(){
+                                 return {
+        
+                                 }
+                             },
+                             methods : {
+        
+                                 } ,
+        
+        
+        
+                                 mounted : {
+        
+                                 }
+                             };
+                 } ,
+        
+        
+                     methods : {
+        
+                     } ,
+        
+        
+        
+                     mounted : {
+        
+                     }
+                 };
+        */
+        Vue.createApp(app).mount('#app-vue')
+    </script>
+
+</html>
