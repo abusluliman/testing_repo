@@ -28,12 +28,12 @@
         <span>cccc</span>
 
 
-        <div>
+        <!-- <div>
             <input type="text" v-model="greetings">
             <p v-bind:class="paraClass" v-on:click="changeToYellow">
                 {{ greetings }} <span> ({{ greetings.length }}) </span>
             </p>
-        </div>
+        </div> -->
         <div>
             <p :class="active ? 'redColor' : 'blueColor'" @click="changeLoveColor">
                 {{ love }}
