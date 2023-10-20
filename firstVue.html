@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        .greenColor {
+            color : green;
+        }
+        .redColor {
+            color : red;
+        }
+        .yellowColor {
+            color : yellow;
+        }
+        .blueColor {
+            color : blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app-vue">
+
+
+
+
+        <div>
+            <input type="text" v-model="greetings">
+            <p v-bind:class="paraClass" v-on:click="changeToYellow">
+                {{ greetings }} <span> ({{ greetings.length }}) </span>
+            </p>
+        </div>
+        <div>
+            <p :class="active ? 'redColor' : 'blueColor'" @click="changeLoveColor">
+                {{ love }}
+            </p>
+        </div>
+        
+
+
+
+
+    </div>
+    
+    <script>
+        Vue.createApp({
+            data(){
+                return {
+                    greetings : 'Hello My Love',
+                    love : 'Mirvat',
+
+                    paraClass : 'greenColor',
+                    active : false,
+                }
+            },
+
+            methods : {
+                changeToYellow(){
+                    this.paraClass = "yellowColor";
+                },
+
+                changeLoveColor(){
+                    this.active = !this.active;
+                },
+            },
+            
+            mounted(){
+                setTimeout(()=>{
+                    this.greetings = "Abood";
+                    if(this.paraClass == 'greenColor'){
+                        this.paraClass = "redColor";
+                    };
+                } , 3000 )
+            },
+        }).mount('#app-vue')
+    </script>
+</body>
+</html>
